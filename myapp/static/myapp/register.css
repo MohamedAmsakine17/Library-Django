@@ -1,0 +1,123 @@
+/*   background-image: url('{% static "imgs/Library_Background.jpg" %}'); */
+
+.content {
+  background-image: linear-gradient(#00000090, #00000075),
+    url("../imgs/Library_Background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  /*-------*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  z-index: 1000;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.register-title {
+  color: #43d8c9;
+  /*-------*/
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  /*-------*/
+  text-transform: uppercase;
+  text-align: center;
+  /*-------*/
+  margin: 0;
+  margin-bottom: 60px;
+}
+
+form {
+  width: 400px;
+  text-align: center;
+}
+
+p {
+  width: 100%;
+}
+
+label,
+input {
+  font-size: 23px;
+}
+
+label {
+  font-weight: 600;
+  color: #100303;
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  border: 1px solid #43d8c9;
+  background-color: #f7f7f7;
+  border-radius: 7px;
+  padding: 7.5px 10px;
+}
+
+input:focus {
+  border: 1px solid #95389e;
+  outline: 1px solid #95389e;
+}
+
+#id_username_helptext,
+#id_password1_helptext,
+#id_password2_helptext {
+  display: none;
+}
+
+form ul {
+  color: #aaaaaa;
+  padding-left: 18px;
+  text-align: start;
+  margin-top: 25px;
+}
+
+.submit-btn {
+  background-color: #43d8c9;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 25px 0px;
+}
+
+.submit-btn:hover {
+  background-color: #95389e;
+}
+
+.login-link {
+  text-align: center;
+}
+
+.login-link a {
+  color: #43d8c9;
+  font-weight: 700;
+}
+
+.login-link a:hover {
+  color: #95389e;
+}
+
+.errorlist {
+  color: #c73659;
+  font-weight: 700;
+}
+
+footer {
+  display: none;
+}

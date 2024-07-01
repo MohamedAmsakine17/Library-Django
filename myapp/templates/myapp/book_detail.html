@@ -1,0 +1,42 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}{{ book.title }} - University Library{% endblock %}
+
+{% block content %}
+    <h1>{{ book.title }}</h1>
+    {% if book.cover_image %}
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover" style="max-height:400px;">
+    {% endif %}
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Summary:</strong> {{ book.summary }}</p>
+    <p><strong>Available Copies:</strong> {{ book.available_copies }}</p>
+
+    {% if user.is_authenticated %}
+        {% if already_issued %}
+            <p>You have already issued this book.</p>
+        {% elif book.available_copies > 0 %}
+            <form method="post" action="">
+                {% csrf_token %}
+                <button type="submit" name="issue_book">Issue Book</button>
+            </form>
+        {% else %}
+            <p>No copies available.</p>
+        {% endif %}
+    {% else %}
+        <p><a href="{% url 'login' %}">Login</a> to issue this book.</p>
+    {% endif %}
+
+    <h2>Other Books</h2>
+    <ul>
+        {% for other_book in other_books %}
+            <li>
+                <a href="{% url 'book_detail' other_book.id %}">
+                    {% if other_book.cover_image %}
+                        <img src="{{ other_book.cover_image.url }}" alt="{{ other_book.title }} Cover" style="max-height:100px;">
+                    {% endif %}
+                    <strong>{{ other_book.title }}</strong> by {{ other_book.author }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

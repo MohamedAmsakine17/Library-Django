@@ -1,0 +1,21 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}Library - University Library{% endblock %}
+
+
+{% block content %}
+    <h1>Library Page</h1>
+    <ul>
+        {% for book in books %}
+            <li>
+                {% if book.cover_image %}
+                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover" style="max-height:200px;">
+                {% endif %}
+                <h2><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></h2>
+                <p><strong>Author:</strong> {{ book.author }}</p>
+                <p>{{ book.summary }}</p>
+                <p><strong>Available Copies:</strong> {{ book.available_copies }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

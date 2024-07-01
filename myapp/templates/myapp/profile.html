@@ -1,0 +1,46 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<h2>Profile</h2>
+<div>
+    <h3>User Information</h3>
+    <p>Email: {{ email }}</p>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <button type="submit" name="update_profile">Update Profile</button>
+    </form>
+</div>
+<div>
+    <h3>Change Password</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ password_form.as_p }}
+        <button type="submit" name="change_password">Change Password</button>
+    </form>
+</div>
+<div>
+    <h3>Issued Books</h3>
+    <ul>
+        {% for transaction in transactions %}
+            <li>
+                <strong>{{ transaction.book.title }}</strong> by {{ transaction.book.author }}
+                {% if transaction.book.cover_image %}
+                    <img src="{{ transaction.book.cover_image.url }}" alt="{{ transaction.book.title }} Cover" style="max-height:100px;">
+                {% endif %}
+                <p>Issue Date: {{ transaction.issue_date }}</p>
+                {% if transaction.status == 'borrowed' %}
+                    <form method="post" action="{% url 'return_book' transaction.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Return Book</button>
+                    </form>
+                {% else %}
+                    <p>Status: {{ transaction.status }}</p>
+                    <p>Return Date: {{ transaction.return_date }}</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

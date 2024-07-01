@@ -1,0 +1,52 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+
+{% block title %}Home - University Library{% endblock %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/index.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  <div class="header">
+    <img id="books-img" src="{% static 'imgs/books.jpg' %}" alt="books Logo" />
+    <div class="header-text">
+      <h1 class="title">
+        Welcome to the <span>Greenwood University</span> Library
+      </h1>
+      <p class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+        molestias sint facilis eos illo, exercitationem dolores esse labore hic
+        aspernatur itaque error. Eius eligendi adipisci sapiente ratione
+        aspernatur iusto totam.
+      </p>
+      <!-- Search form -->
+      <form method="GET" action="{% url 'search' %}" class="search-form">
+        <input type="text" name="query" class="search-input" placeholder="Search for a book by title">
+        <button type="submit" class="search-button"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <!-- Display books -->
+  <div class="books-display">
+    {% for book in books %}
+      <div class="book-item">
+        {% if book.cover_image %}
+        <div style="background-image: url('{{ book.cover_image.url }}');" class="book-cover"></div>
+        {% endif %}
+        <div class="book-text">
+            <h2 class="book-title">{{ book.title }}</h2>
+            <p class="book-author"><strong>Author:</strong> {{ book.author }}</p>
+            <p class="book-summary">{{ book.summary|truncatewords:10 }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <!-- Button to view all books -->
+  <div class="view-all-books">
+    <a href="{% url 'library' %}" class="view-all-btn">View All Books</a>
+  </div>
+</div>
+{% endblock %}

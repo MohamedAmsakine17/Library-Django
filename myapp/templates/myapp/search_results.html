@@ -1,0 +1,27 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}Search Results - University Library{% endblock %}
+
+{% block content %}
+    <h1>Search Results</h1>
+    {% if query %}
+        <p>Results for "{{ query }}":</p>
+        <ul>
+            {% for book in results %}
+                <li>
+                    {% if book.cover_image %}
+                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover" style="max-height:200px;">
+                    {% endif %}
+                    <h2><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></h2>
+                    <p><strong>Author:</strong> {{ book.author }}</p>
+                    <p>{{ book.summary }}</p>
+                    <p><strong>Available Copies:</strong> {{ book.available_copies }}</p>
+                </li>
+            {% empty %}
+                <li>No books found matching your query.</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Please enter a search query.</p>
+    {% endif %}
+{% endblock %}

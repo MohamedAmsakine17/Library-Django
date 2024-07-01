@@ -1,0 +1,153 @@
+.content {
+  padding: 160px 300px 0px;
+}
+
+.header {
+  display: flex;
+  background-color: #43d8c9;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  margin-bottom: 75px;
+}
+
+#books-img {
+  width: 600px;
+}
+
+.header-text {
+  padding: 40px;
+  color: white;
+}
+
+.title {
+  font-size: 40px;
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.title span {
+  font-weight: 600;
+  color: #100303;
+}
+
+.header-text .text {
+  font-size: 20px;
+  margin-bottom: 55px;
+}
+
+.header-btn {
+  color: white;
+  font-size: 23px;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 8px 25px;
+  text-decoration: none;
+}
+
+hr {
+  width: 100%;
+  margin: 35px 0;
+  border: 0;
+  border-top: 2px solid #43d8c9;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+}
+
+.search-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: #100303;
+  color: white;
+  padding: 10px 12.5px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #333;
+}
+
+.books-display {
+  margin-top: 75px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.book-item {
+  width: 20%;
+  background-color: #f7f7f7;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.book-cover {
+  width: 100%;
+  height: 325px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.book-text {
+  padding: 10px;
+}
+
+.book-author strong {
+  color: #43d8c9;
+}
+
+.book-summary {
+  font-size: 15px;
+  color: #808080;
+}
+
+.view-all-books {
+  width: 100%;
+  padding: 60px 0;
+}
+
+.view-all-btn {
+  background-color: #43d8c9;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 25px 0px;
+  text-decoration: none;
+  margin: auto;
+  display: block;
+  width: fit-content;
+}
+
+.view-all-btn:hover {
+  background-color: #95389e;
+}

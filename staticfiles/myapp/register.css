@@ -1,0 +1,8 @@
+/*   background-image: url('{% static "imgs/Library_Background.jpg" %}'); */
+
+.content {
+  background-image: url('{% static "imgs/Library_Background.jpg" %}');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

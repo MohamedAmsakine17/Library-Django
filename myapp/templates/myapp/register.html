@@ -1,0 +1,63 @@
+{% extends "myapp/base.html" %}
+
+{% load static %}  
+
+{% block title %}Register - University Library{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/register.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <h2 class="register-title">S'inscrire</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="submit-btn" type="submit">S'inscrire</button>
+            </form>
+            <p class="login-link">Vous avez déjà un compte? <a href="{% url 'login' %}">Connectez-vous ici</a>.</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_code %}
+    <script>
+        document.querySelectorAll("label").forEach((e)=>{
+        console.log(e.textContent)
+        if (e.textContent == "Username:" ){
+            e.textContent = "Nom d'utilisateur :";
+        } else if(e.textContent == "Password:"){
+            e.textContent = "Mot de passe :";
+        } else if (e.textContent == "Password confirmation:"){
+            e.textContent = "Confirmation mot de passe :"
+        }
+        })
+        
+        for(let i = 0; i < document.querySelectorAll("p").length; i++){
+            document.querySelectorAll("p")[i].id = 'p-' + i;
+        }
+
+        let ulElement = document.querySelector('form ul');
+        let p4Element = document.getElementById('p-3');
+    
+        ulElement.parentNode.insertBefore(p4Element, ulElement);
+
+        var passwordInput = document.getElementById('id_password1');
+
+        // Initial CSS styles
+        ulElement.style.display = 'none';
+        ulElement.style.opacity = '0';
+        ulElement.style.transform = 'translateY(50px)';
+        ulElement.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+        passwordInput.addEventListener('click', function() {
+            ulElement.style.display = 'block';  // Make the element visible
+            setTimeout(function() {
+                ulElement.style.opacity = '1';
+                ulElement.style.transform = 'translateY(0)';
+            }, 10);
+    });
+    </script>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}University Library{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'myapp/style.css' %}"
+    />
+    {% block extracss %}{% endblock %}
+  </head>
+  <body>
+    <div class="nav">
+      <nav>
+        <div class="brand"><span>Green</span>wood University</div>
+        <ul>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'library' %}">Library</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' %}">Profile</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    <div class="main">{% block content %}{% endblock %}</div>
+    <!-- <img
+      id="emsi-static-logo"
+      src="../../static/imgs/Emsi_logo.png"
+      alt="Emsi Logo"
+    /> -->
+    <!-- <footer><p>Amsakine Mohamed <span>3IIR-16</span></p></footer> -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-text-container">
+          <h2 class="footer-brand"><span>Green</span>wood University</h2>
+          <p class="footer-text">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores
+            corporis enim accusantium ipsa nihil assumenda.
+          </p>
+        </div>
+        <ul class="footer-list">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'library' %}">Library</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' %}">Profile</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <hr />
+      <div class="copyright">&#169; Amsakine Mohamed</div>
+    </footer>
+    {% block js_code %} {% endblock %}
+  </body>
+</html>
