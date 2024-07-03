@@ -2,6 +2,7 @@
   padding: 160px 300px 0px;
 }
 
+
 .header {
   display: flex;
   background-color: #43d8c9;
@@ -105,6 +106,11 @@ hr {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   border-radius: 10px;
   overflow: hidden;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  color: #100303;
+  text-decoration: none;
 }
 
 .book-cover {
@@ -126,6 +132,15 @@ hr {
 .book-summary {
   font-size: 15px;
   color: #808080;
+}
+
+.book-item:hover {
+  background-color: #43d8c9;
+  color: white;
+}
+
+.book-item:hover .book-author strong {
+  color: #95389e;
 }
 
 .view-all-books {

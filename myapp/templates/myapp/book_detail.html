@@ -1,15 +1,23 @@
 {% extends "myapp/base.html" %}
+{% load static %}
 
 {% block title %}{{ book.title }} - University Library{% endblock %}
 
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/book_detail.css' %}" />
+{% endblock %}
+
 {% block content %}
-    <h1>{{ book.title }}</h1>
-    {% if book.cover_image %}
-        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover" style="max-height:400px;">
+    <div class="content">
+    <div class="container">
+        {% if book.cover_image %}
+    <div style="background-image: url('{{ book.cover_image.url }}');" class="book-cover"></div>
     {% endif %}
-    <p><strong>Author:</strong> {{ book.author }}</p>
-    <p><strong>Summary:</strong> {{ book.summary }}</p>
-    <p><strong>Available Copies:</strong> {{ book.available_copies }}</p>
+    <div class="book-text">
+        <h1 class="book-title">{{ book.title }}</h1>
+        <p class="book-author"><strong>Author:</strong> {{ book.author }}</p>
+        <p class="book-summary"><strong>Summary:</strong> {{ book.summary }}</p>
+        <p class="book-copies"><strong>Available Copies:</strong> {{ book.available_copies }}</p>
 
     {% if user.is_authenticated %}
         {% if already_issued %}
@@ -17,7 +25,7 @@
         {% elif book.available_copies > 0 %}
             <form method="post" action="">
                 {% csrf_token %}
-                <button type="submit" name="issue_book">Issue Book</button>
+                <button class="issue_book-btn" type="submit" name="issue_book">Issue Book</button>
             </form>
         {% else %}
             <p>No copies available.</p>
@@ -25,18 +33,23 @@
     {% else %}
         <p><a href="{% url 'login' %}">Login</a> to issue this book.</p>
     {% endif %}
+    </div>
+    </div>
 
-    <h2>Other Books</h2>
-    <ul>
+    <h2 class="other-books">Other Books</h2>
+    <ul class="books-display">
         {% for other_book in other_books %}
-            <li>
-                <a href="{% url 'book_detail' other_book.id %}">
+                <a class="book-item" href="{% url 'book_detail' other_book.id %}">
                     {% if other_book.cover_image %}
-                        <img src="{{ other_book.cover_image.url }}" alt="{{ other_book.title }} Cover" style="max-height:100px;">
+                    <div style="background-image: url('{{ other_book.cover_image.url }}');" class="other-book-cover"></div>
                     {% endif %}
-                    <strong>{{ other_book.title }}</strong> by {{ other_book.author }}
+                    <div class="other-book-text">
+                        <h2 class="other-book-title">{{ other_book.title }}</h2>
+                        <p class="other-book-author"><strong>Author:</strong> {{ other_book.author }}</p>
+                        <p class="other-book-summary">{{ other_book.summary|truncatewords:10 }}</p>
+                    </div>
                 </a>
-            </li>
         {% endfor %}
     </ul>
+    </div>
 {% endblock %}

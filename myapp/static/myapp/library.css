@@ -1,0 +1,67 @@
+.content {
+  padding: 160px 300px 0px;
+}
+
+.search-keyword {
+  text-align: center;
+  font-size: 20px;
+  color: #43d8c9;
+}
+
+h1 {
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.books-display {
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.book-item {
+  width: 20%;
+  background-color: #f7f7f7;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px 2.5%;
+  cursor: pointer;
+  color: #100303;
+  text-decoration: none;
+}
+
+.book-cover {
+  width: 100%;
+  height: 325px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.book-text {
+  padding: 10px;
+}
+
+.book-author strong {
+  color: #43d8c9;
+}
+
+.book-summary {
+  font-size: 15px;
+  color: #808080;
+}
+
+.book-item:hover {
+  background-color: #43d8c9;
+  color: white;
+}
+
+.book-item:hover .book-author strong {
+  color: #95389e;
+}

@@ -1,0 +1,204 @@
+.content {
+  padding: 160px 300px 0px;
+}
+
+.profile-main-title {
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.user-email-form-container {
+  display: none;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  position: relative;
+  border: 5px solid #95389e;
+  cursor: pointer;
+}
+
+.update-picture {
+  font-size: 25px;
+  color: white;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #95389e;
+  padding: 15px 17.5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.update-picture:hover {
+  background-color: #43d8c9;
+}
+
+.profile-img:hover {
+  border: 5px solid #43d8c9;
+}
+
+.profile-img:hover .update-picture {
+  background-color: #43d8c9;
+}
+
+.update-picture:hover {
+  background-color: #43d8c9;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.profile-text {
+  padding-left: 50px;
+}
+
+.profile-title,
+.books-title,
+.change-pwd {
+  font-size: 30px;
+  color: #43d8c9;
+}
+
+.profile-username,
+.profile-email {
+  font-size: 23px;
+}
+
+.profile-username i,
+.profile-email i {
+  color: #43d8c9;
+  cursor: pointer;
+}
+
+.profile-username i:hover,
+.profile-email i:hover {
+  color: #95389e;
+}
+
+.books-container {
+  margin-top: 60px;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.books-container ul {
+  display: flex;
+  list-style: none;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.books-container ul a {
+  width: 250px;
+  margin-right: 40px;
+  text-decoration: none;
+  color: #100303;
+  margin-bottom: 20px;
+}
+
+.book-img {
+  width: 250px;
+  height: 325px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.book-dates {
+  color: #474747;
+  margin: 5px 0;
+}
+
+.return-btn,
+.change-btn,
+.update_profile {
+  background-color: #43d8c9;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 25px 0px;
+}
+
+.return-btn:hover,
+.change-btn:hover,
+.update_profile:hover {
+  background-color: #95389e;
+}
+
+.password-form-modal {
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  display: none;
+  margin-top: 60px;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.change-pwd {
+  text-align: center;
+}
+
+label,
+input {
+  font-size: 23px;
+}
+
+label {
+  font-weight: 600;
+  color: #100303;
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  border: 1px solid #43d8c9;
+  background-color: #f7f7f7;
+  border-radius: 7px;
+  padding: 7.5px 10px;
+}
+
+input:focus {
+  border: 1px solid #95389e;
+  outline: 1px solid #95389e;
+}
+
+.user-email-form-container {
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  margin-top: 60px;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+#id_username_helptext {
+  display: none;
+}

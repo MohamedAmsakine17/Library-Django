@@ -1,46 +1,95 @@
 {% extends 'myapp/base.html' %}
 
+{% load static %}
+
+{% block title %}Profile - University Library{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/profile.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>Profile</h2>
+<div class="content">
+    <h2 class="profile-main-title">Profile</h2>
 <div>
-    <h3>User Information</h3>
-    <p>Email: {{ email }}</p>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <button type="submit" name="update_profile">Update Profile</button>
-    </form>
+    <div class="container">
+        <div style="background-image: url('{{ img }}');" class="profile-img update-info"> <i class="bi bi-brush-fill update-picture update-info"></i></div>
+        <div class="profile-text">
+            <h3 class="profile-title">User Information</h3>
+            <p class="profile-username">Username : {{ username }} <i class="bi bi-brush-fill update-info"></i></p>
+            <p class="profile-email">Email: {{ email }} <i class="bi bi-brush-fill update-info"></i></p>
+            <p class="profile-email">Password: *********** <i class="bi bi-brush-fill" id="change-password"></i></p>
+        </div>
+    </div>
+    <div class="user-email-form-container">
+        <form class="user-email-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <button class="update_profile" type="submit" name="update_profile">Update Profile</button>
+        </form>
+    </div>
 </div>
-<div>
-    <h3>Change Password</h3>
-    <form method="POST">
-        {% csrf_token %}
-        {{ password_form.as_p }}
-        <button type="submit" name="change_password">Change Password</button>
-    </form>
+
+<div class="password-form-modal">
+    <div class="password-form">
+        <h3 class="change-pwd">Change Password</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ password_form.as_p }}
+            <button class="change-btn" type="submit" name="change_password">Change Password</button>
+        </form>
+    </div>
 </div>
-<div>
-    <h3>Issued Books</h3>
+
+<div class="books-container">
+    <h3 class="books-title">Issued Books</h3>
     <ul>
         {% for transaction in transactions %}
-            <li>
-                <strong>{{ transaction.book.title }}</strong> by {{ transaction.book.author }}
+            <a href="#">
                 {% if transaction.book.cover_image %}
-                    <img src="{{ transaction.book.cover_image.url }}" alt="{{ transaction.book.title }} Cover" style="max-height:100px;">
+                    <div style="background-image: url('{{ transaction.book.cover_image.url }}');" class="book-img"> </div>
                 {% endif %}
-                <p>Issue Date: {{ transaction.issue_date }}</p>
+                <strong>{{ transaction.book.title }}</strong> by {{ transaction.book.author }}
+                <p  class="book-dates">Issue Date: {{ transaction.issue_date }}</p>
                 {% if transaction.status == 'borrowed' %}
                     <form method="post" action="{% url 'return_book' transaction.id %}">
                         {% csrf_token %}
-                        <button type="submit">Return Book</button>
+                        <button class="return-btn" type="submit">Return Book</button>
                     </form>
                 {% else %}
-                    <p>Status: {{ transaction.status }}</p>
-                    <p>Return Date: {{ transaction.return_date }}</p>
+                    <p class="book-dates">Status: {{ transaction.status }}</p>
+                    <p class="book-dates">Return Date: {{ transaction.return_date }}</p>
                 {% endif %}
-            </li>
+            </a>
         {% endfor %}
     </ul>
 </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block js_code %}
+    <script>
+        let UserForm = document.querySelector(".user-email-form-container");
+        let passwordModal = document.querySelector(".password-form-modal");
+
+        document.querySelector("#change-password").addEventListener("click",()=>{
+            passwordModal.style.display = passwordModal.style.display == 'block' ? 'none' : 'block';
+            UserForm.style.display = 'none';
+        })
+
+        document.querySelectorAll(".update-info").forEach(e=>{
+            e.addEventListener("click",()=>{
+                passwordModal.style.display = 'none' ;
+                UserForm.style.display = UserForm.style.display == 'block' ? 'none' : 'block';
+        })
+        })
+        
+        let ulElement = document.querySelector('.password-form form ul');
+        ulElement.style.display = 'none'
+
+    </script>
 {% endblock %}

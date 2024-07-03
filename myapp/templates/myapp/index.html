@@ -32,7 +32,7 @@
   <!-- Display books -->
   <div class="books-display">
     {% for book in books %}
-      <div class="book-item">
+      <a href="{% url 'book_detail' book.pk %}" class="book-item">
         {% if book.cover_image %}
         <div style="background-image: url('{{ book.cover_image.url }}');" class="book-cover"></div>
         {% endif %}
@@ -41,7 +41,7 @@
             <p class="book-author"><strong>Author:</strong> {{ book.author }}</p>
             <p class="book-summary">{{ book.summary|truncatewords:10 }}</p>
         </div>
-      </div>
+      </a>
     {% endfor %}
   </div>
   <!-- Button to view all books -->

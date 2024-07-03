@@ -11,29 +11,29 @@
 {% block content %}
     <div class="content">
         <div class="container">
-            <h2 class="register-title">S'inscrire</h2>
+            <h2 class="register-title">Sign-Up</h2>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button class="submit-btn" type="submit">S'inscrire</button>
             </form>
-            <p class="login-link">Vous avez déjà un compte? <a href="{% url 'login' %}">Connectez-vous ici</a>.</p>
+            <p class="login-link">Already have an account? <a href="{% url 'login' %}">Log in here</a>.</p>
         </div>
     </div>
 {% endblock %}
 
 {% block js_code %}
     <script>
-        document.querySelectorAll("label").forEach((e)=>{
-        console.log(e.textContent)
-        if (e.textContent == "Username:" ){
-            e.textContent = "Nom d'utilisateur :";
-        } else if(e.textContent == "Password:"){
-            e.textContent = "Mot de passe :";
-        } else if (e.textContent == "Password confirmation:"){
-            e.textContent = "Confirmation mot de passe :"
-        }
-        })
+        // document.querySelectorAll("label").forEach((e)=>{
+        // console.log(e.textContent)
+        // if (e.textContent == "Username:" ){
+        //     e.textContent = "Nom d'utilisateur :";
+        // } else if(e.textContent == "Password:"){
+        //     e.textContent = "Mot de passe :";
+        // } else if (e.textContent == "Password confirmation:"){
+        //     e.textContent = "Confirmation mot de passe :"
+        // }
+        // })
         
         for(let i = 0; i < document.querySelectorAll("p").length; i++){
             document.querySelectorAll("p")[i].id = 'p-' + i;

@@ -1,22 +1,30 @@
 {% extends "myapp/base.html" %}
+{% load static %}
 
 {% block title %}Search Results - University Library{% endblock %}
 
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/library.css' %}" />
+{% endblock %}
+
 {% block content %}
-    <h1>Search Results</h1>
+    <div class="content">
+        <h1>Search Results</h1>
     {% if query %}
-        <p>Results for "{{ query }}":</p>
-        <ul>
+        <p class="search-keyword">Results for "{{ query }}"</p>
+        <ul class="books-display">
             {% for book in results %}
-                <li>
+                <a href="{% url 'book_detail' book.pk %}" class="book-item">
                     {% if book.cover_image %}
-                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover" style="max-height:200px;">
+                    <div style="background-image: url('{{ book.cover_image.url }}');" class="book-cover"></div>
                     {% endif %}
-                    <h2><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></h2>
-                    <p><strong>Author:</strong> {{ book.author }}</p>
-                    <p>{{ book.summary }}</p>
-                    <p><strong>Available Copies:</strong> {{ book.available_copies }}</p>
-                </li>
+                    <div class="book-text">
+                        <h2 class="book-title">{{ book.title }}</h2>
+                        <p class="book-author"><strong>Author:</strong> {{ book.author }}</p>
+                        <p class="book-summary">{{ book.summary|truncatewords:10 }}</p>
+                        <p class="book-copies"><strong>Available Copies:</strong> {{ book.available_copies }}</p>
+                    </div>
+                </a>
             {% empty %}
                 <li>No books found matching your query.</li>
             {% endfor %}
@@ -24,4 +32,5 @@
     {% else %}
         <p>Please enter a search query.</p>
     {% endif %}
+    </div>
 {% endblock %}

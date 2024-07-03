@@ -1,0 +1,23 @@
+{% extends 'myapp/admin_dashboard.html' %}
+
+{% block dashboard %}
+    <h2 class="dash-title">Book List</h2>
+    <div class="dash-button-container">
+        <a class="dash-button" href="{% url 'add_book' %}" class="btn btn-primary">Add Book</a>
+    </div>
+    <ul class="dash-list">
+        {% for book in books %}
+            <li class="dash-item">
+                <div class="dash-info">
+                   <span class="dash-book-title"> {{ book.title }}</span>
+                   <span class="dash-book-author"> by {{ book.author }}</span> 
+                </div>
+                <div class="dash-buttons">
+                    <a class="edit-btn" href="{% url 'edit_book' book.id %}">Edit</a>
+                    <a class="delete-btn" href="{% url 'delete_book' book.id %}">Delete</a>
+                </div>
+                
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

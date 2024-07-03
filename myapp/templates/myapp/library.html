@@ -1,21 +1,29 @@
 {% extends "myapp/base.html" %}
+{% load static %}
 
 {% block title %}Library - University Library{% endblock %}
 
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/library.css' %}" />
+{% endblock %}
 
 {% block content %}
-    <h1>Library Page</h1>
-    <ul>
+    <div class="content">
+        <h1>Library</h1>
+    <ul class="books-display">
         {% for book in books %}
-            <li>
+            <a href="{% url 'book_detail' book.pk %}" class="book-item">
                 {% if book.cover_image %}
-                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover" style="max-height:200px;">
+                    <div style="background-image: url('{{ book.cover_image.url }}');" class="book-cover"></div>
                 {% endif %}
-                <h2><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></h2>
-                <p><strong>Author:</strong> {{ book.author }}</p>
-                <p>{{ book.summary }}</p>
-                <p><strong>Available Copies:</strong> {{ book.available_copies }}</p>
-            </li>
+                <div class="book-text">
+                    <h2 class="book-title">{{ book.title }}</h2>
+                    <p class="book-author"><strong>Author:</strong> {{ book.author }}</p>
+                    <p class="book-summary">{{ book.summary|truncatewords:10 }}</p>
+                    <p class="book-copies"><strong>Available Copies:</strong> {{ book.available_copies }}</p>
+                </div>
+            </a>
         {% endfor %}
     </ul>
+    </div>
 {% endblock %}

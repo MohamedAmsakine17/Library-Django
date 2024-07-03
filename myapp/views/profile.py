@@ -45,6 +45,8 @@ def profile(request):
         'profile_form': profile_form,
         'password_form': password_form,
         'email': request.user.email,
+        'username': request.user.username ,
+        'img': profile_instance.profile_picture.url if profile_instance and profile_instance.profile_picture else None,
         'transactions': transactions,
     }
     return render(request, 'myapp/profile.html', context)

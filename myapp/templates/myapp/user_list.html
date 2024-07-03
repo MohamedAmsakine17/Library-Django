@@ -1,0 +1,20 @@
+{% extends 'myapp/admin_dashboard.html' %}
+
+{% block dashboard %}
+<h2 class="dash-title">User List</h2>
+   <div class="dash-button-container"> <a class="dash-button" href="{% url 'add_user' %}">Add User</a></div>
+    <ul class="dash-list">
+        {% for user in users %}
+            <li class="dash-item">
+                <div class="dash-info">
+                    <span class="dash-username">{{ user.username }}</span>
+                    <span class="dash-email">({{ user.email }})</span>
+                </div>
+                <div class="dash-buttons">
+                    <a class="edit-btn" href="{% url 'edit_user' user.id %}">Edit</a>
+                    <a class="delete-btn" href="{% url 'delete_user' user.id %}">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

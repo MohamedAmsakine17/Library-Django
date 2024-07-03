@@ -1,0 +1,185 @@
+.content {
+  padding: 160px 300px 0px;
+}
+
+.admin-title {
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  text-align: center;
+}
+
+.admin-title span {
+  color: #43d8c9;
+}
+
+.dashboard-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-buttons a {
+  text-decoration: none;
+  color: #100303;
+  margin-right: 30px;
+  font-size: 22px;
+}
+
+.dashboard-buttons a:hover {
+  color: #43d8c9;
+}
+
+.dashboard-container {
+  padding: 60px;
+}
+
+.dash-title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.dash-button,
+.dash-delete-button {
+  background-color: #43d8c9;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.dash-delete-button {
+  background-color: #c73659;
+  margin-right: 25px;
+}
+
+.dash-button:hover,
+.dash-delete-button:hover {
+  background-color: #95389e;
+}
+
+.dash-button-container {
+  display: flex;
+  justify-content: end;
+}
+
+.dash-list {
+  list-style: none;
+  padding: 30px;
+  background-color: #f7f7f7;
+  border-radius: 15px;
+}
+
+.dash-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.dash-buttons a {
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+  font-weight: 500;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.edit-btn {
+  background-color: #95389e;
+}
+
+.delete-btn {
+  background-color: #c73659;
+}
+
+.dash-buttons a:hover {
+  background-color: #43d8c9;
+}
+
+.dash-username,
+.dash-book-title {
+  font-size: 20px;
+}
+
+.dash-email {
+  color: #808080;
+}
+
+.dash-book-author {
+  color: #43d8c9;
+}
+
+.dash-trans-user {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.dash-trans-book {
+  font-size: 20px;
+}
+
+.dash-trans-date {
+  color: #808080;
+  font-size: 18px;
+}
+
+.dash-trans-status {
+  color: #43d8c9;
+  font-size: 15px;
+}
+
+#id_username_helptext {
+  display: none;
+}
+
+label,
+input,
+textarea,
+select {
+  font-size: 23px;
+}
+
+label {
+  font-weight: 600;
+  color: #100303;
+  display: block;
+  margin-bottom: 10px;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid #43d8c9;
+  background-color: #f7f7f7;
+  border-radius: 7px;
+  padding: 7.5px 10px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #95389e;
+  outline: 1px solid #95389e;
+}
+
+form {
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+}
+
+.confirmation-text {
+  font-size: 30px;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.confirmation-text span {
+  font-weight: 500;
+  color: #43d8c9;
+}

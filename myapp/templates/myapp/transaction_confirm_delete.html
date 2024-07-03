@@ -1,0 +1,11 @@
+{% extends 'myapp/admin_dashboard.html' %}
+
+{% block dashboard %}
+    <h2 class="dash-title">Delete Transaction</h2>
+    <p class="confirmation-text">Are you sure you want to delete the transaction where <span>"{{ transaction.user.username }}" borrowed "{{ transaction.book.title }}"</span>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="dash-delete-button">Delete</button>
+        <a class="dash-button" href="{% url 'transaction_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endblock %}

@@ -11,7 +11,7 @@
 {% block content %}
     <div class="content">
         <div class="container">
-            <h2 class="register-title">Se connecter</h2>
+            <h2 class="register-title">Login</h2>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -24,13 +24,13 @@
 
 {% block js_code %}
     <script>
-        document.querySelectorAll("label").forEach((e)=>{
-        console.log(e.textContent)
-        if (e.textContent == "Username:" ){
-            e.textContent = "Nom d'utilisateur :";
-        } else if(e.textContent == "Password:"){
-            e.textContent = "Mot de passe :";
-        } 
-        })
+        // document.querySelectorAll("label").forEach((e)=>{
+        // console.log(e.textContent)
+        // if (e.textContent == "Username:" ){
+        //     e.textContent = "Nom d'utilisateur :";
+        // } else if(e.textContent == "Password:"){
+        //     e.textContent = "Mot de passe :";
+        // } 
+        // })
     </script>
 {% endblock %}

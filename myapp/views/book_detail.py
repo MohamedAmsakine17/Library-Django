@@ -15,7 +15,7 @@ def book_detail(request, book_id):
             transaction.issue_book()
             return redirect('profile')
 
-    other_books = Book.objects.exclude(id=book_id)
+    other_books = Book.objects.exclude(id=book_id)[:4]
     context = {
         'book': book,
         'already_issued': already_issued,

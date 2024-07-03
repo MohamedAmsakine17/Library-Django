@@ -1,0 +1,24 @@
+{% extends 'myapp/admin_dashboard.html' %}
+
+{% block dashboard %}
+    <h2 class="dash-title">Transaction List</h2>
+    <div class="dash-button-container">    <a class="dash-button" href="{% url 'add_transaction' %}" class="btn btn-primary">Add Transaction</a>
+    </div>
+    <ul class="dash-list">
+        {% for transaction in transactions %}
+            <li class="dash-item">
+                <div class="dash-info">
+                    <div class="dash-trans-user">Username : {{ transaction.user.username }}</div>
+                    <div class="dash-trans-book">Book Title : borrowed "{{ transaction.book.title }}"</div>
+                    <div class="dash-trans-date">Issue Date : {{ transaction.issue_date }} </div>
+                    <div class="dash-trans-status">Status : {{ transaction.get_status_display }}</div>
+                </div>
+                
+                <div class="dash-buttons">
+                    <a class="edit-btn" href="{% url 'edit_transaction' transaction.id %}">Edit</a>
+                    <a class="delete-btn" href="{% url 'delete_transaction' transaction.id %}">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

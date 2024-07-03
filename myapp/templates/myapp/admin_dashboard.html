@@ -1,0 +1,23 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+
+{% block title %}Dashboard - University Library{% endblock %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/dashboard.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h2 class="admin-title"><span>Admin</span> Dashboard</h2>
+    <div class="dashboard-buttons">
+        <a href="{% url 'user_list' %}" class="btn btn-primary">Manage Users</a>
+        <a href="{% url 'book_list' %}" class="btn btn-primary">Manage Books</a>
+        <a href="{% url 'transaction_list' %}" class="btn btn-primary">Manage Transactions</a>
+    </div>
+
+    <div class="dashboard-container">
+        {% block dashboard %}{% endblock %}
+    </div>
+    </div>
+{% endblock %}

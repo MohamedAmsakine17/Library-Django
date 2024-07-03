@@ -1,0 +1,10 @@
+{% extends 'myapp/admin_dashboard.html' %}
+
+{% block dashboard %}
+    <h2 class="dash-title">{% if form.instance.pk %}Edit Transaction{% else %}Add Transaction{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="dash-button" type="submit" class="btn btn-primary">Save</button>
+    </form>
+{% endblock %}
